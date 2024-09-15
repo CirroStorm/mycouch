@@ -1,8 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>MyCouch</Title>
+    <Version>0.1.0</Version>
+    <Description>asdfsaf</Description>
   </PropertyGroup>
 
   <ItemGroup>

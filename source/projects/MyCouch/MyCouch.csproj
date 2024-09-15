@@ -1,14 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Title>MyCouch.CouchDB client</Title>
     <Description>MyCouch is a simple async CouchDB client building on top of the async HTTP client and uses JSON.Net to provide flexible serialization behaviour. It tries to keep the domain language of CouchDB and lets you work with requests and responses but also provides you with an alternative simplifying async API. MyCouch lets you work with raw JSON and/or entities/POCOS without requiring any implementation of interfaces or base-classes etc.</Description>
-    <PackageId>MyCouch</PackageId>    
+    <PackageId>MyCouchCirroStorm</PackageId>    
     <PackageTags>CouchDB NoSQL</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>https://github.com/danielwertheim/mycouch/releases</PackageReleaseNotes>
     <PackageIcon>package-icon.png</PackageIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>7.7.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

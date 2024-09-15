@@ -52,7 +52,9 @@ namespace MyCouch.Net
         protected virtual void ThrowIfDisposed()
         {
             if (IsDisposed)
+            {
                 throw new ObjectDisposedException(GetType().Name);
+            }
         }
 
         protected virtual HttpClient CreateHttpClient(ConnectionInfo connectionInfo)
@@ -60,9 +62,11 @@ namespace MyCouch.Net
             var handler = new HttpClientHandler
             {
                 AllowAutoRedirect = connectionInfo.AllowAutoRedirect,
-                UseProxy = connectionInfo.UseProxy
+                UseProxy = connectionInfo.UseProxy,
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true,
+                Proxy = connectionInfo.Proxy
             };
-            handler.Proxy = connectionInfo.Proxy;
 
             var client = new HttpClient(handler, true)
             {
@@ -165,9 +169,9 @@ namespace MyCouch.Net
         protected virtual string GenerateRequestUri(HttpRequest httpRequest)
         {
             var relative = httpRequest.RelativeUrl.TrimStart('/');
-            
-            return relative.StartsWith("_design%2F") 
-                ? $"{Address.ToString().TrimEnd('/')}/{Uri.UnescapeDataString(relative)}" 
+
+            return relative.StartsWith("_design%2F")
+                ? $"{Address.ToString().TrimEnd('/')}/{Uri.UnescapeDataString(relative)}"
                 : $"{Address.ToString().TrimEnd('/')}/{relative}";
         }
     }
